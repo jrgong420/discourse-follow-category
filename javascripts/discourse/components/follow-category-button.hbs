@@ -1,0 +1,16 @@
+{{#if @model.category}}
+  {{#if this.showFollowButton}}
+    <DButton
+      @action={{action "followCategory"}}
+      @class="follow-category-button btn-default"
+      @icon="bell"
+      @translatedLabel={{theme-i18n "follow_category_button_title"}}
+    />
+  {{else}}
+    <CategoryNotificationsDropdownButton
+      @value={{this.categoryNotificationLevel}}
+      @category={{@model.category}}
+      @onChange={{action "changeCategoryNotificationLevel"}}
+    />
+  {{/if}}
+{{/if}}
