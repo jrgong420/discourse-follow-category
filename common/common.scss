@@ -7,7 +7,6 @@ body:not(.tags-page) .navigation-controls {
 // Follow Category Button Animation Styles
 .follow-category-button {
   transition: all 0.2s ease-in-out;
-  transform-origin: center;
 
   &:hover {
     background-color: var(--primary-medium, #0088cc);
@@ -15,25 +14,36 @@ body:not(.tags-page) .navigation-controls {
     transform: scale(1.05);
   }
 
-  &.bell-ring {
-    animation: bell-ring 0.4s ease-in-out;
+  // Target only the bell icon for animation
+  &.bell-ring .d-icon-bell {
+    animation: bell-chime 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform-origin: center bottom;
     will-change: transform; // Optimize animation performance
+
+    // Respect user's motion preferences
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+
+  // Provide alternative feedback for reduced motion users
+  @media (prefers-reduced-motion: reduce) {
+    &.bell-ring .d-icon-bell {
+      transition: color 0.3s ease-in-out;
+      color: var(--success, #009900);
+    }
   }
 }
 
-// Bell ring animation with horizontal shake effect
-@keyframes bell-ring {
-  0% { transform: rotate(0deg) scale(1); }
-  10% { transform: rotate(-10deg) scale(1.1); }
-  20% { transform: rotate(10deg) scale(1.1); }
-  30% { transform: rotate(-10deg) scale(1.1); }
-  40% { transform: rotate(10deg) scale(1.1); }
-  50% { transform: rotate(-5deg) scale(1.05); }
-  60% { transform: rotate(5deg) scale(1.05); }
-  70% { transform: rotate(-2deg) scale(1.02); }
-  80% { transform: rotate(2deg) scale(1.02); }
-  90% { transform: rotate(-1deg) scale(1.01); }
-  100% { transform: rotate(0deg) scale(1); }
+// Bell chime animation with natural vertical bounce and rotation
+@keyframes bell-chime {
+  0% { transform: translateY(0) rotate(0deg) scale(1); }
+  15% { transform: translateY(-3px) rotate(-8deg) scale(1.1); }
+  30% { transform: translateY(-1px) rotate(4deg) scale(1.05); }
+  45% { transform: translateY(-2px) rotate(-2deg) scale(1.02); }
+  60% { transform: translateY(0) rotate(1deg) scale(1.01); }
+  75% { transform: translateY(-1px) rotate(-0.5deg) scale(1.005); }
+  100% { transform: translateY(0) rotate(0deg) scale(1); }
 }
 
 // Following state (dropdown button) styling
