@@ -3,3 +3,51 @@ body:not(.tags-page) .navigation-controls {
     display: none;
   }
 }
+
+// Follow Category Button Animation Styles
+.follow-category-button {
+  transition: all 0.2s ease-in-out;
+  transform-origin: center;
+
+  &:hover {
+    background-color: var(--primary-medium, #0088cc);
+    color: var(--secondary, #ffffff);
+    transform: scale(1.05);
+  }
+
+  &.bell-ring {
+    animation: bell-ring 0.4s ease-in-out;
+    will-change: transform; // Optimize animation performance
+  }
+}
+
+// Bell ring animation with horizontal shake effect
+@keyframes bell-ring {
+  0% { transform: rotate(0deg) scale(1); }
+  10% { transform: rotate(-10deg) scale(1.1); }
+  20% { transform: rotate(10deg) scale(1.1); }
+  30% { transform: rotate(-10deg) scale(1.1); }
+  40% { transform: rotate(10deg) scale(1.1); }
+  50% { transform: rotate(-5deg) scale(1.05); }
+  60% { transform: rotate(5deg) scale(1.05); }
+  70% { transform: rotate(-2deg) scale(1.02); }
+  80% { transform: rotate(2deg) scale(1.02); }
+  90% { transform: rotate(-1deg) scale(1.01); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+// Following state (dropdown button) styling
+.category-notifications-dropdown-button {
+  transition: all 0.2s ease-in-out;
+
+  .btn {
+    background-color: var(--primary, #0088cc);
+    color: var(--secondary, #ffffff);
+    border-color: var(--primary, #0088cc);
+
+    &:hover {
+      background-color: var(--primary-medium, #0066aa);
+      border-color: var(--primary-medium, #0066aa);
+    }
+  }
+}
