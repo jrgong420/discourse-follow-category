@@ -1,7 +1,8 @@
 en:
   theme_metadata:
     description: "A theme component to add follow button for categories"
-  follow_category_button_title: "Follow"
+  follow_category_button_title: "Get Notified"
+  follow_category_button_tooltip: "Get notified about new topics in this category and never miss important discussions"
   category_options:
     notifications:
       title: "change notification level for this category"

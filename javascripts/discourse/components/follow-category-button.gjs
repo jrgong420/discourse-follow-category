@@ -68,6 +68,7 @@ export default class FollowCategoryButton extends Component {
           @action={{this.followCategory}}
           @icon="bell"
           @translatedLabel={{i18n (themePrefix "follow_category_button_title")}}
+          @title={{i18n (themePrefix "follow_category_button_tooltip")}}
           class={{this.buttonClasses}}
         />
       {{else}}
