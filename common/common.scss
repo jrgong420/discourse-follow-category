@@ -16,9 +16,11 @@ body:not(.tags-page) .navigation-controls {
 
   // Target only the bell icon for animation
   &.bell-ring .d-icon-bell {
-    animation: authentic-bell-swing 0.8s ease-out;
+    animation:
+      authentic-bell-swing 0.8s ease-out,
+      bell-success-pulse 1.2s ease-out 0.6s;
     transform-origin: center top;
-    will-change: transform; // Optimize animation performance
+    will-change: transform, box-shadow; // Optimize animation performance
 
     // Respect user's motion preferences
     @media (prefers-reduced-motion: reduce) {
@@ -48,6 +50,22 @@ body:not(.tags-page) .navigation-controls {
   80% { transform: rotate(-0.5deg); }
   90% { transform: rotate(0.2deg); }
   100% { transform: rotate(0deg); }
+}
+
+// Success pulse animation that appears after bell swing
+@keyframes bell-success-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 153, 0, 0.6);
+    color: inherit;
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(0, 153, 0, 0);
+    color: var(--success, #009900);
+  }
+  100% {
+    box-shadow: 0 0 0 8px rgba(0, 153, 0, 0);
+    color: inherit;
+  }
 }
 
 // Following state (dropdown button) styling

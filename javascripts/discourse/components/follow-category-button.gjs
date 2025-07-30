@@ -55,10 +55,10 @@ export default class FollowCategoryButton extends Component {
     // Set notification level
     this.args.model?.setNotification(NotificationLevels.WATCHING_FIRST_POST);
 
-    // Clean up animation class after duration (800ms to match CSS)
+    // Clean up animation class after duration (1800ms total: 800ms swing + 1200ms pulse)
     setTimeout(() => {
       this.isAnimating = false;
-    }, 800);
+    }, 1800);
   }
 
   <template>
